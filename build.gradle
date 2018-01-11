@@ -45,14 +45,15 @@ publishing {
 apply plugin: 'com.jfrog.bintray'
 
 bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
+    user = System.getProperty('BINTRAY_USER')
+    key = System.getProperty('BINTRAY_KEY')
     pkg {
         repo = 'maven'
         name = 'animate-fx'
-        userOrg = 'onexip GmbH'
+        userOrg = 'onexip'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/onexip/animate-fx.git'
+        publish = true
 
         version {
             name = '0.0.1'
