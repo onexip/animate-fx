@@ -1,0 +1,20 @@
+.headline{
+    -fx-font-size: 24px;
+}
+
+.button {
+    -fx-cursor: hand;
+    -fx-background-color: #2ca1ff;
+    -fx-background-radius: 2px;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 8px 14px;
+}
+
+.button:hover {
+    -fx-background-color: derive(#2ca1ff, 20%);
+}
+
+.root{
+    -fx-padding: 20px;
+}
