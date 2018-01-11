@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.transitions;
 
 import javafx.animation.KeyFrame;
@@ -8,35 +12,35 @@ import javafx.util.Duration;
 
 /**
  * Animate a flash effect on a node
- * 
+ * <p>
  * Port of Flash from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes flash {
- * 	0%, 50%, 100% {opacity: 1;}	
- * 	25%, 75% {opacity: 0;}
+ * 0%, 50%, 100% {opacity: 1;}
+ * 25%, 75% {opacity: 0;}
  * }
- * 
+ *
  * @author Jasper Potts
  */
 public class FlashTransition extends CachedTimelineTransition {
     /**
      * Create new FlashTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FlashTransition(final Node node) {
         super(
-            node,
-            TimelineBuilder.create()
-                .keyFrames(
-                    new KeyFrame(Duration.millis(0),    new KeyValue(node.opacityProperty(), 1, WEB_EASE)),
-                    new KeyFrame(Duration.millis(250),  new KeyValue(node.opacityProperty(), 0, WEB_EASE)),
-                    new KeyFrame(Duration.millis(500),  new KeyValue(node.opacityProperty(), 1, WEB_EASE)),
-                    new KeyFrame(Duration.millis(750),  new KeyValue(node.opacityProperty(), 0, WEB_EASE)),
-                    new KeyFrame(Duration.millis(1000),  new KeyValue(node.opacityProperty(), 1, WEB_EASE))
-                )
-                .build()
-            );
+                node,
+                TimelineBuilder.create()
+                        .keyFrames(
+                                new KeyFrame(Duration.millis(0), new KeyValue(node.opacityProperty(), 1, WEB_EASE)),
+                                new KeyFrame(Duration.millis(250), new KeyValue(node.opacityProperty(), 0, WEB_EASE)),
+                                new KeyFrame(Duration.millis(500), new KeyValue(node.opacityProperty(), 1, WEB_EASE)),
+                                new KeyFrame(Duration.millis(750), new KeyValue(node.opacityProperty(), 0, WEB_EASE)),
+                                new KeyFrame(Duration.millis(1000), new KeyValue(node.opacityProperty(), 1, WEB_EASE))
+                        )
+                        .build()
+        );
         setCycleDuration(Duration.seconds(1));
         setDelay(Duration.seconds(0.2));
     }

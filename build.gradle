@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 group 'com.onexip'
 version '0.0.1'
 

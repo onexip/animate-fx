@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.transitions;
 
 import javafx.animation.Interpolator;
@@ -10,9 +14,9 @@ import javafx.scene.Node;
 import javafx.util.Duration;
 
 /**
- * A Transition that uses a Timeline internally and turns SPEED caching on for 
+ * A Transition that uses a Timeline internally and turns SPEED caching on for
  * the animated node during the animation.
- * 
+ *
  * @author Jasper Potts
  */
 public class CachedTimelineTransition extends Transition {
@@ -25,18 +29,18 @@ public class CachedTimelineTransition extends Transition {
 
     /**
      * Create new CachedTimelineTransition
-     * 
-     * @param node The node that is being animated by the timeline
+     *
+     * @param node     The node that is being animated by the timeline
      * @param timeline The timeline for the animation, it should be from 0 to 1 seconds
      */
     public CachedTimelineTransition(final Node node, final Timeline timeline) {
         this(node, timeline, true);
     }
-    
+
     /**
      * Create new CachedTimelineTransition
-     * 
-     * @param node The node that is being animated by the timeline
+     *
+     * @param node     The node that is being animated by the timeline
      * @param timeline The timeline for the animation, it should be from 0 to 1 seconds
      * @param useCache When true the node is cached as image during the animation
      */
@@ -45,19 +49,20 @@ public class CachedTimelineTransition extends Transition {
         this.timeline = timeline;
         this.useCache = useCache;
         statusProperty().addListener(new ChangeListener<Status>() {
-            @Override public void changed(ObservableValue<? extends Status> ov, Status t, Status newStatus) {
-                switch(newStatus) {
+            @Override
+            public void changed(ObservableValue<? extends Status> ov, Status t, Status newStatus) {
+                switch (newStatus) {
                     case RUNNING:
                         starting();
                         break;
-                    default: 
+                    default:
                         stopping();
                         break;
                 }
             }
         });
     }
-    
+
     /**
      * Called when the animation is starting
      */
@@ -69,7 +74,7 @@ public class CachedTimelineTransition extends Transition {
             node.setCacheHint(CacheHint.SPEED);
         }
     }
-    
+
     /**
      * Called when the animation is stopping
      */
@@ -80,7 +85,8 @@ public class CachedTimelineTransition extends Transition {
         }
     }
 
-    @Override protected void interpolate(double d) {
+    @Override
+    protected void interpolate(double d) {
         timeline.playFrom(Duration.seconds(d));
         timeline.stop();
     }

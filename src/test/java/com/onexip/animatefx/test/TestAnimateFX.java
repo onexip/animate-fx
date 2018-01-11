@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.test;
 
 import com.onexip.animatefx.transitions.CachedTimelineTransition;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.transitions;
 
 import javafx.animation.KeyFrame;
@@ -8,15 +12,15 @@ import javafx.util.Duration;
 
 /**
  * Animate a swing effect on the given node
- * 
+ * <p>
  * Port of Swing from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes swing {
- * 	20% { transform: rotate(15deg); }	
- * 	40% { transform: rotate(-10deg); }
- * 	60% { transform: rotate(5deg); }	
- * 	80% { transform: rotate(-5deg); }	
- * 	100% { transform: rotate(0deg); }
+ * 20% { transform: rotate(15deg); }
+ * 40% { transform: rotate(-10deg); }
+ * 60% { transform: rotate(5deg); }
+ * 80% { transform: rotate(-5deg); }
+ * 100% { transform: rotate(0deg); }
  * }
  *
  * @author Jasper Potts
@@ -24,23 +28,23 @@ import javafx.util.Duration;
 public class SwingTransition extends CachedTimelineTransition {
     /**
      * Create new SwingTransition
-     * 
+     *
      * @param node The node to affect
      */
     public SwingTransition(final Node node) {
         super(
-            node,
-            TimelineBuilder.create()
-                .keyFrames(
-                    new KeyFrame(Duration.millis(0), new KeyValue(node.rotateProperty(), 0, WEB_EASE)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(node.rotateProperty(), 15, WEB_EASE)),
-                    new KeyFrame(Duration.millis(400), new KeyValue(node.rotateProperty(), -10, WEB_EASE)),
-                    new KeyFrame(Duration.millis(600), new KeyValue(node.rotateProperty(), 5, WEB_EASE)),
-                    new KeyFrame(Duration.millis(800), new KeyValue(node.rotateProperty(), -5, WEB_EASE)),
-                    new KeyFrame(Duration.millis(1000), new KeyValue(node.rotateProperty(), 0, WEB_EASE))
-                )
-                .build()
-            );
+                node,
+                TimelineBuilder.create()
+                        .keyFrames(
+                                new KeyFrame(Duration.millis(0), new KeyValue(node.rotateProperty(), 0, WEB_EASE)),
+                                new KeyFrame(Duration.millis(200), new KeyValue(node.rotateProperty(), 15, WEB_EASE)),
+                                new KeyFrame(Duration.millis(400), new KeyValue(node.rotateProperty(), -10, WEB_EASE)),
+                                new KeyFrame(Duration.millis(600), new KeyValue(node.rotateProperty(), 5, WEB_EASE)),
+                                new KeyFrame(Duration.millis(800), new KeyValue(node.rotateProperty(), -5, WEB_EASE)),
+                                new KeyFrame(Duration.millis(1000), new KeyValue(node.rotateProperty(), 0, WEB_EASE))
+                        )
+                        .build()
+        );
         setCycleDuration(Duration.seconds(1));
         setDelay(Duration.seconds(0.2));
     }

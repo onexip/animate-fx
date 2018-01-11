@@ -1,4 +1,8 @@
-.headline{
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
+.headline {
     -fx-font-size: 24px;
 }
 
@@ -15,6 +19,6 @@
     -fx-background-color: derive(#2ca1ff, 20%);
 }
 
-.root{
+.root {
     -fx-padding: 20px;
 }

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.transitions;
 
 import javafx.animation.KeyFrame;
@@ -11,70 +15,72 @@ import javafx.util.Duration;
 
 /**
  * Animate a flip in x effect on the given node
- * 
+ * <p>
  * Port of FlipInX from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes flipInX {
- *     0% {
- *         transform: perspective(400px) rotateX(90deg);
- *         opacity: 0;
- *     }
- *     40% {
- *         transform: perspective(400px) rotateX(-10deg);
- *     }
- *     70% {
- *         transform: perspective(400px) rotateX(10deg);
- *     }
- *     100% {
- *         transform: perspective(400px) rotateX(0deg);
- *         opacity: 1;
- *     }
+ * 0% {
+ * transform: perspective(400px) rotateX(90deg);
+ * opacity: 0;
+ * }
+ * 40% {
+ * transform: perspective(400px) rotateX(-10deg);
+ * }
+ * 70% {
+ * transform: perspective(400px) rotateX(10deg);
+ * }
+ * 100% {
+ * transform: perspective(400px) rotateX(0deg);
+ * opacity: 1;
+ * }
  * }
  *
  * @author Jasper Potts
  */
 public class FlipInXTransition extends CachedTimelineTransition {
     private Camera oldCamera;
-    
+
     /**
      * Create new FlipInXTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FlipInXTransition(final Node node) {
         super(
-            node,
-            TimelineBuilder.create()
-                .keyFrames(
-                    new KeyFrame(Duration.millis(0), 
-                        new KeyValue(node.rotateProperty(), -90, WEB_EASE),
-                        new KeyValue(node.opacityProperty(), 0, WEB_EASE)
-                    ),
-                    new KeyFrame(Duration.millis(400), 
-                        new KeyValue(node.rotateProperty(), 10, WEB_EASE)
-                    ),
-                    new KeyFrame(Duration.millis(700), 
-                        new KeyValue(node.rotateProperty(), -10, WEB_EASE)
-                    ),
-                    new KeyFrame(Duration.millis(1000), 
-                        new KeyValue(node.rotateProperty(), 0, WEB_EASE),
-                        new KeyValue(node.opacityProperty(), 1, WEB_EASE)
-                    )
-                )
-                .build()
-            );
+                node,
+                TimelineBuilder.create()
+                        .keyFrames(
+                                new KeyFrame(Duration.millis(0),
+                                        new KeyValue(node.rotateProperty(), -90, WEB_EASE),
+                                        new KeyValue(node.opacityProperty(), 0, WEB_EASE)
+                                ),
+                                new KeyFrame(Duration.millis(400),
+                                        new KeyValue(node.rotateProperty(), 10, WEB_EASE)
+                                ),
+                                new KeyFrame(Duration.millis(700),
+                                        new KeyValue(node.rotateProperty(), -10, WEB_EASE)
+                                ),
+                                new KeyFrame(Duration.millis(1000),
+                                        new KeyValue(node.rotateProperty(), 0, WEB_EASE),
+                                        new KeyValue(node.opacityProperty(), 1, WEB_EASE)
+                                )
+                        )
+                        .build()
+        );
         setCycleDuration(Duration.seconds(1));
         setDelay(Duration.seconds(0.2));
     }
 
-    @Override protected void starting() {
+    @Override
+    protected void starting() {
         super.starting();
         node.setRotationAxis(Rotate.X_AXIS);
         oldCamera = node.getScene().getCamera();
         node.getScene().setCamera(new PerspectiveCamera());
     }
 
-    @Override protected void stopping() {
+    @Override
+    protected void stopping() {
         super.stopping();
         node.setRotate(0);
         node.setRotationAxis(Rotate.Z_AXIS);

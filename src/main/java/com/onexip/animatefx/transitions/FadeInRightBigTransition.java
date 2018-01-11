@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.transitions;
 
 import javafx.animation.KeyFrame;
@@ -8,26 +12,26 @@ import javafx.util.Duration;
 
 /**
  * Animate a fade in right big effect on a node
- * 
+ * <p>
  * Port of FadeInRightBig from Animate.css http://daneden.me/animate by Dan Eden
- * 
+ * <p>
  * {@literal @}keyframes fadeInRightBig {
- * 	0% {
- * 		opacity: 0;
- * 		transform: translateX(2000px);
- * 	}
- * 	100% {
- * 		opacity: 1;
- * 		transform: translateX(0);
- * 	}
+ * 0% {
+ * opacity: 0;
+ * transform: translateX(2000px);
  * }
- * 
+ * 100% {
+ * opacity: 1;
+ * transform: translateX(0);
+ * }
+ * }
+ *
  * @author Jasper Potts
  */
 public class FadeInRightBigTransition extends CachedTimelineTransition {
     /**
      * Create new FadeInRightBigTransition
-     * 
+     *
      * @param node The node to affect
      */
     public FadeInRightBigTransition(final Node node) {
@@ -36,18 +40,19 @@ public class FadeInRightBigTransition extends CachedTimelineTransition {
         setDelay(Duration.seconds(0.2));
     }
 
-    @Override protected void starting() {
+    @Override
+    protected void starting() {
         double startX = node.getScene().getWidth() - node.localToScene(0, 0).getX();
         timeline = TimelineBuilder.create()
                 .keyFrames(
-                    new KeyFrame(Duration.millis(0),    
-                        new KeyValue(node.opacityProperty(), 0, WEB_EASE),
-                        new KeyValue(node.translateXProperty(), startX, WEB_EASE)
-                    ),
-                    new KeyFrame(Duration.millis(1000),    
-                        new KeyValue(node.opacityProperty(), 1, WEB_EASE),
-                        new KeyValue(node.translateXProperty(), 0, WEB_EASE)
-                    )
+                        new KeyFrame(Duration.millis(0),
+                                new KeyValue(node.opacityProperty(), 0, WEB_EASE),
+                                new KeyValue(node.translateXProperty(), startX, WEB_EASE)
+                        ),
+                        new KeyFrame(Duration.millis(1000),
+                                new KeyValue(node.opacityProperty(), 1, WEB_EASE),
+                                new KeyValue(node.translateXProperty(), 0, WEB_EASE)
+                        )
                 )
                 .build();
         super.starting();

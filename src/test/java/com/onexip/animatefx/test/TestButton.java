@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2018 onexip GmbH. www.onexip.com
+ */
+
 package com.onexip.animatefx.test;
 
 import com.onexip.animatefx.transitions.CachedTimelineTransition;
@@ -8,7 +12,7 @@ public class TestButton extends Button {
     private CachedTimelineTransition transition;
 
     public TestButton(Class<? extends CachedTimelineTransition> transition) {
-        super(transition.getSimpleName().replace("Transition",""));
+        super(transition.getSimpleName().replace("Transition", ""));
 
 
         try {
