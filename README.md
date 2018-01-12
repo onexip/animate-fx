@@ -21,4 +21,5 @@ compile 'com.onexip:animate-fx:0.0.1'
 
 Bintray: https://bintray.com/onexip/maven/animate-fx
 
+# Author
 (c) onexip GmbH. 2018 www.onexip.com
